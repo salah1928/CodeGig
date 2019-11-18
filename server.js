@@ -5,10 +5,14 @@ const gravatar   = require("gravatar");
 const bcrypt     = require("bcryptjs");
 const passport   = require("passport");
 const app = express();
-
+app.set('view engine','ejs');
 const users = require("./routes/api/users");
 const profiles = require('./routes/api/profiles');
-const shops = require('./routes/api/shops');
+const posts = require('./routes/api/posts');
+
+const client = require('./routes');
+
+app.use(express.static(__dirname + '/assets'));
 
 //M I D D L E - W A R E // BODY-PARSER
 app.use(bodyParser.urlencoded({extended:false}));
@@ -36,7 +40,9 @@ app.use("/api/users",users);
 app.use('/api/profiles',profiles);
 //
 
-app.use('/api/shops',shops);
+app.use('/api/posts',posts);
+
+app.use('/',client);
 
 //____________________________________________\\
 const PORT = process.env.PORT || 5000 ;

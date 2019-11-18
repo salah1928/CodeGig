@@ -6,7 +6,9 @@ const User     = require("../../models/User");
 const jwt      = require("jsonwebtoken");
 const keys     = require("../../config/Keys");
 const passport = require("passport");
+const bodyParser = require("body-parser")
 
+express().use(bodyParser())
 
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
@@ -53,15 +55,21 @@ router.post('/register',(req,res)=>{
         })
 })
 //! //_ROUTE_GET_PUBLIC_//_:LOGIN USER_______________________________________________________________________________________\\
-router.get('/login',(req,res)=>{
+router.post('/login',(req,res)=>{
       //* Valdation
-      const {errors,isValid} = validateLoginInput(req.body);
+      
 
+      const {errors,isValid} = validateLoginInput(req.body);
+        
       if(!isValid){
           return res.status(400).json(errors);
-      }
+      } 
+    
       //*_________
+
     const email = req.body.email;
+    console.log(req.body.email);
+    
     const password = req.body.password;
     
     User.findOne({email:email})

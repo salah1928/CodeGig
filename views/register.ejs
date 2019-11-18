@@ -1,0 +1,10 @@
+<% include partials/header %>
+
+<form method="POST" action="/api/users/register">
+    <input name="name" type="text" placeholder="name">
+    <input name="email" type="text" placeholder="email">
+    <input name="password" type="password" placeholder="password">
+    <input name="password2" type="password" placeholder="confirm password">
+    <button type="submit" >Register</button>
+</form>
+<% include partials/footer %>
