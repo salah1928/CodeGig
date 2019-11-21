@@ -9,7 +9,7 @@ const Post = require('../../models/Post');
 const Profile = require('../../models/Profile');
 
 // Validation
-// const validatePostInput = require('../../Dev connector finale/devconnector_final/validation/post');
+const validatePostInput = require('../../validation/post');
 
 // @route   GET api/posts/test
 // @desc    Tests post route
@@ -44,13 +44,13 @@ router.post(
   '/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    // const { errors, isValid } = validatePostInput(req.body);
+    const { errors, isValid } = validatePostInput(req.body);
 
-    // // Check Validation
-    // if (!isValid) {
-    //   // If any errors, send 400 with errors object
-    //   return res.status(400).json(errors);
-    // }
+    // Check Validation
+    if (!isValid) {
+      // If any errors, send 400 with errors object
+      return res.status(400).json(errors);
+    }
 
     const newPost = new Post({
       description: req.body.description,

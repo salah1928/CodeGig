@@ -1,10 +1,42 @@
 <% include partials/header %>
-
-<form method="POST" action="/api/users/register">
-    <input name="name" type="text" placeholder="name">
-    <input name="email" type="text" placeholder="email">
-    <input name="password" type="password" placeholder="password">
-    <input name="password2" type="password" placeholder="confirm password">
+<link rel="stylesheet" href="/css/auth/register.css">
+<!-- <form id="myform">
+    <input id="name" name="name" type="text" placeholder="name">
+    <div id="name-error"></div>
+    <input id="email" name="email" type="text" placeholder="email">
+    <div id="email-error"></div>
+    <input id="password" name="password" type="password" placeholder="password">
+    <div id="password-error"></div>
+    <input id="password2" name="password2" type="password" placeholder="confirm password">
+    <div id="password2-error"></div>
     <button type="submit" >Register</button>
-</form>
+</form> -->
+<div class="outter">
+  <div class="container">
+    <div class="top">
+      <h2>Sign up</h2>
+      <div class="fb-login">
+        <h2>Continue with Facebook</h2>
+      </div>
+    </div>
+    <div class="hr">
+      <div class="txt"><h5>OR</h5></div>
+      <hr>
+    </div>
+      <form class="form" id="myform">
+        <input type="text" id="email" placeholder="email adress">
+        <div class="errors-text" id="email-error"></div>
+        <input type="password" id="password" placeholder="password">
+        <div class="errors-text" id="password-error"></div>
+        <input type="password" id="password2" placeholder="confirm password">
+        <div class="errors-text" id="password2-error"></div>
+        <button class="btn-click"><span class="btn-text">Join</span></button>
+      </form>
+    <div class="bottom">
+      <hr>
+      <p class="texts">Already have an account?<a href="/login"> Log in!</a></p>
+    </div>
+  </div>
+</div>
+<script src="/javascript/register.js"></script>
 <% include partials/footer %>

@@ -10,4 +10,10 @@ router.get('/login',(req,res)=>{
 router.get('/register',(req,res)=>{
     res.render('register');
 })
+router.get('/createProfile',(req,res)=>{
+    res.render('createProfile');
+})
+router.get('/createPost',(req,res)=>{
+    res.render('createPost');
+})
 module.exports = router;

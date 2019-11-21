@@ -1,0 +1,41 @@
+<form id="myform">
+    <input id="profileName" type="text">
+    <div id="name-error"></div>
+    <input id="phoneNumber" type="phoneNumber">
+    <div id="number-error"></div>
+    <input id="location" type="text">
+    <div id="location-error"></div>
+    <button>submit</button>
+</form>
+
+<script>
+    document.getElementById('myform').addEventListener('submit',postprofile)
+    
+    function postprofile(e){
+        e.preventDefault()
+
+        var profileName = document.getElementById('profileName').value;
+        var phoneNumber = document.getElementById('phoneNumber').value;
+        var location = document.getElementById('location').value;
+
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if(this.status == 200){
+                console.log(this.responseText)
+            }else{
+                console.log(this.responseText)
+                let errors = JSON.parse(this.responseText)
+                document.getElementById('name-error').innerHTML = errors.profileName ? errors.profileName : ""
+                document.getElementById('location-error').innerHTML = errors.location ? errors.location : ""
+                document.getElementById('number-error').innerHTML = errors.phoneNumber ? errors.phoneNumber : ""
+
+            }
+        }
+        xhr.open('POST','http://localhost:5000/api/profiles',true);
+        var tocken = localStorage.getItem('tocken');
+        xhr.setRequestHeader('Authorization',tocken);
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+        xhr.send(`profileName=${profileName}&location=${location}&phoneNumber=${phoneNumber}`)
+    }
+</script>

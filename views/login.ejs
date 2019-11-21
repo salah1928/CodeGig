@@ -1,55 +1,40 @@
 <% include partials/header %>
-
-<form action="" id="myform">
-        <input name="email" type="email" id="email" placeholder="email">
-        <div id="email-error"></div>
-        <input name="password" type="password" id="password" placeholder="password">
-        <div id="password-error"></div>
-        <button>submit</button>
-</form>
-<script>
-    document.getElementById('myform').addEventListener('submit',postName)
-    
-    function postName(e){
-      e.preventDefault();
-
-      var email = document.getElementById('email').value;
-      var password = document.getElementById('password').value;
-      
-      var xhr = new XMLHttpRequest();
-      xhr.onload = function(){
-        
-        if(this.status==200){
-            console.log(this.responseText);
-            const succes = JSON.parse(this.responseText)
-            localStorage.setItem('tocken',succes.tocken)
-
-            let url = "http://localhost:5000/api/profiles"
-            let token = succes.tocken
-            let h = new Headers();
-
-            h.append('Authorization',token)
-
-            let req = new Request(url,{
-              method:'GET',
-              mode:"cors",
-              headers:h
-            })
-            fetch(req)
-            .then(res =>res.json()).then(data=>console.log(data))
-            
-        }else{
-            const errors = JSON.parse(this.responseText)
-            document.getElementById('email-error').innerHTML = errors.email ? errors.email : ""
-            document.getElementById('password-error').innerHTML =  errors.password ? errors.password : ""
-        }
-      }
-      xhr.open('POST', 'http://localhost:5000/api/users/login', true);
-      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-     
-      xhr.send(`email=${email}&password=${password}`);
-    }
-    
-</script>
-     
-     <% include partials/footer %>
+<link rel="stylesheet" href="/css/auth/login.css">
+<!-- <form id="myform">
+    <input id="name" name="name" type="text" placeholder="name">
+    <div id="name-error"></div>
+    <input id="email" name="email" type="text" placeholder="email">
+    <div id="email-error"></div>
+    <input id="password" name="password" type="password" placeholder="password">
+    <div id="password-error"></div>
+    <input id="password2" name="password2" type="password" placeholder="confirm password">
+    <div id="password2-error"></div>
+    <button type="submit" >Register</button>
+</form> -->
+<div class="outter">
+  <div class="container">
+    <div class="top">
+      <h2>Welcome back</h2>
+      <div class="fb-login">
+        <h2>Continue with Facebook</h2>
+      </div>
+    </div>
+    <div class="hr">
+      <div class="txt"><h5>OR</h5></div>
+      <hr>
+    </div>
+      <form class="form" id="myform">
+        <input type="text" id="email" placeholder="email adress">
+        <div class="errors-text" id="email-error"></div>
+        <input type="password" id="password" placeholder="password">
+        <div class="errors-text" id="password-error"></div>
+        <button class="btn-click"><span class="btn-text">Log in</span></button>
+      </form>
+    <div class="bottom">
+      <hr>
+      <p class="texts">Don't have an account?<a href="/register"> Register!</a></p>
+    </div>
+  </div>
+</div>
+<script src="/javascript/login.js"></script>
+<% include partials/footer %>

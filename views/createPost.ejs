@@ -1,0 +1,41 @@
+<form id="myform">
+    <input id="title" type="text">
+    <p id="title-error"></p>
+    <input id="description" type="text">
+    <p id="description-error"></p>
+    <input id="technologies" type="text">
+    <p id="technologies-error"></p>
+    <input id="price" type="number">
+    <button>submit</button>
+</form>
+<script>
+        document.getElementById('myform').addEventListener('submit',postppost)
+        
+        function postppost(e){
+            e.preventDefault()
+    
+            var title = document.getElementById('title').value;
+            var description = document.getElementById('description').value;
+            var technologies = document.getElementById('technologies').value;
+    
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                if(this.status == 200){
+                    console.log(this.responseText)
+                }else{
+                    console.log(this.responseText)
+                    let errors = JSON.parse(this.responseText)
+                    document.getElementById('title-error').innerHTML = errors.title ? errors.title : ""
+                    document.getElementById('technologies-error').innerHTML = errors.technologies ? errors.technologies : ""
+                    document.getElementById('description-error').innerHTML = errors.description ? errors.description : ""
+    
+                }
+            }
+            xhr.open('POST','http://localhost:5000/api/posts',true);
+            var tocken = localStorage.getItem('tocken');
+            xhr.setRequestHeader('Authorization',tocken);
+            xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    
+            xhr.send(`title=${title}&technologies=${technologies}&description=${description}`)
+        }
+    </script>

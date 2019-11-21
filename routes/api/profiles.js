@@ -29,7 +29,7 @@ router.get('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
         })
         .catch(err=>res.status(404).json(err))
 })
-//! ROUTE_GET_PRIVATE__//_CREATE/UPDATE PROFILE______
+//! ROUTE_POST_PRIVATE__//_CREATE/UPDATE PROFILE______
 router.post('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
     //* VALIDATION
     const { errors , isValid} = validateProfileInput(req.body);
