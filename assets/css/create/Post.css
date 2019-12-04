@@ -1,0 +1,364 @@
+.outter {
+  height: 100vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+a {
+  color: #e94f37;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background: #393e41;
+  width: 40%;
+  height: 65%;
+  position: relative;
+}
+
+.container .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 90%;
+}
+
+.container .form input {
+  height: 3%;
+  width: 97%;
+  padding: 2%;
+  border-radius: 2px;
+  border: transparent;
+}
+
+.container .form input:focus {
+  border-color: #e94f37;
+  -webkit-box-shadow: 0 0 1px 3px #e94f37;
+          box-shadow: 0 0 1px 3px #e94f37;
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+
+.container .form button {
+  border: transparent;
+  width: 100%;
+  border-radius: 5px;
+  margin: 2%;
+  height: 100%;
+}
+
+.container .form button:focus {
+  border-color: #e94f37;
+  -webkit-box-shadow: 0 0 1px 3px #e94f37;
+          box-shadow: 0 0 1px 3px #e94f37;
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  opacity: 0.6;
+  font-size: 1.3em;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 70%;
+    height: 75%;
+  }
+  .container .form {
+    height: 90%;
+  }
+  .container .checkbox-div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: baseline;
+        -ms-flex-pack: baseline;
+            justify-content: baseline;
+    width: 30%;
+    margin-bottom: 1%;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: calc(100% - 5em);
+    height: 70%;
+  }
+  .container .form {
+    height: 90%;
+  }
+  #technologies label, .showmore label {
+    font-size: 0.8em !important;
+  }
+}
+
+.errors {
+  border: red 1px solid !important;
+}
+
+.errors-text {
+  color: red;
+  font-size: 0.7em;
+}
+
+.titlelabel {
+  color: white;
+  text-align: left;
+  margin-bottom: 0.5%;
+  width: 100%;
+  font-size: calc(0.3vw + 0.9rem);
+  font-weight: 500;
+}
+
+textarea {
+  width: 100%;
+  min-width: 97%;
+  max-width: 105%;
+  min-height: 10%;
+  max-height: 20%;
+  border-radius: 2px;
+}
+
+textarea:focus {
+  border-color: #e94f37;
+  -webkit-box-shadow: 0 0 1px 3px #e94f37;
+          box-shadow: 0 0 1px 3px #e94f37;
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+
+#technologies, .showmore {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  -webkit-box-pack: baseline;
+      -ms-flex-pack: baseline;
+          justify-content: baseline;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+#technologies label, .showmore label {
+  color: white;
+  display: block;
+  font-size: 1em;
+}
+
+#technologies input, .showmore input {
+  height: 60%;
+  width: 30%;
+  display: block;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.background {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: #232323;
+}
+
+.bottom {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 10%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.bottom .btn {
+  height: 120%;
+  width: 30%;
+}
+
+.bottom .price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+.bottom .price #currency {
+  width: 30%;
+  margin-right: 7%;
+}
+
+.bottom .price select {
+  width: 60%;
+  height: 80%;
+  border-radius: 3px;
+  background: white;
+}
+
+.bottom .price select option {
+  background: #232323;
+  color: white;
+}
+
+.bottom .price select option:hover {
+  background: #393e41;
+  color: red;
+}
+
+.bottom .price select:focus {
+  border-color: #e94f37;
+  -webkit-box-shadow: 0 0 1px 3px #e94f37;
+          box-shadow: 0 0 1px 3px #e94f37;
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+
+.clicked {
+  background: red;
+}
+
+.checkbox-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: baseline;
+      -ms-flex-pack: baseline;
+          justify-content: baseline;
+  width: 25%;
+  margin-bottom: 1%;
+}
+
+.hidden {
+  display: none;
+}
+
+#showmore-btn {
+  color: #e94f37;
+  display: block;
+  font-size: 0.8em;
+}
+
+input[type=checkbox]:checked ~ label {
+  color: #e94f37 !important;
+}
+
+.btmbtm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 5%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-top: 5%;
+}
+
+.btn {
+  height: 15%;
+  width: 30%;
+  margin-top: 5%;
+}
+
+.location, .payment {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.location select, .payment select {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  background: white;
+}
+
+.location select option, .payment select option {
+  background: #232323;
+  color: white;
+}
+
+.location select option:hover, .payment select option:hover {
+  background: #393e41;
+  color: red;
+}
+
+.location select:focus, .payment select:focus {
+  border-color: #e94f37;
+  -webkit-box-shadow: 0 0 1px 3px #e94f37;
+          box-shadow: 0 0 1px 3px #e94f37;
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+/*# sourceMappingURL=Post.css.map */

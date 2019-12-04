@@ -1,0 +1,23 @@
+$accent_orange:rgba(233, 79, 55, 1);
+$background_black:rgba(57, 62, 65, 1);
+$background_black2:rgba(35, 35, 35, 1);
+$text_secondary:rgba(92, 104, 111, 1);
+$body_blue:rgba(246, 247, 255, 1);
+
+body{
+    background: $background_black;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 100vh;
+}
+.wrapper{
+    
+    color: white;
+    a{
+        color: $accent_orange;
+    }
+    h1{text-align: center;font-size: 50px;}
+    h6{text-align: center;font-size: 15;font-weight: 100;}
+}
+

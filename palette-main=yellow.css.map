@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,8EAA8E;AAE9E,SAAS;AAOT,SAAS",
+    "sources": [
+        "palette-main=yellow.scss"
+    ],
+    "names": [],
+    "file": "palette-main=yellow.css"
+}

@@ -5,7 +5,6 @@
 
 body {
   background: #f6f7ff;
-  overflow: hidden;
   font-family: 'Roboto','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -64,5 +63,50 @@ body {
 .btn-second a {
   text-decoration: none;
   color: white;
+}
+
+.icons {
+  color: #e94f37;
+}
+
+nav {
+  background: #393e41;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 10vh;
+}
+
+nav h2 a {
+  color: #e94f37;
+  text-decoration: none;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 15%;
+  list-style: none;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: white;
+}
+
+@media (max-width: 1000px) {
+  #nav ul {
+    width: 50%;
+  }
 }
 /*# sourceMappingURL=index.css.map */

@@ -19,7 +19,8 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 //C O N F I G U R A T I O N // MONGO-DB
-const db = "mongodb://localhost/___SHOP___";
+
+const db = require('./config/keys').mongoURI;
 //
 //connecting to mongoDB
 mongoose.connect(db,{useNewUrlParser : true})

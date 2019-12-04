@@ -8,6 +8,7 @@ const Post = require('../../models/Post');
 // Profile model
 const Profile = require('../../models/Profile');
 
+const User = require('../../models/User')
 // Validation
 const validatePostInput = require('../../validation/post');
 
@@ -20,10 +21,195 @@ router.get('/test', (req, res) => res.json({ msg: 'Posts Works' }));
 // @desc    Get posts
 // @access  Public
 router.get('/', (req, res) => {
+  // Post.find()
+  //   .sort({ date: -1 })
+    // .then(posts => res.json(posts))
+    // .catch(err => res.status(404).json({ nopostsfound: 'No posts found' }));
+  Post.find()
+    .sort({ date: -1 })
+    .then(posts => res.render("showall",{posts:posts}));
+  // Post.find({},(err,posts)=>{
+  //   if(err){
+  //     console.log(err);
+  //   }else{
+      
+  //     res.render("showAll",{posts:posts})
+  //   }
+  // })
+    
+});
+router.get('/filter/:price/:location/:payment',(req,res)=>{
+
+
+   
+  function filterByPrice(posts) {
+    let final = posts.filter(post=>
+      post.price == req.params.price
+      )
+    return final
+  }
+  function filterByPayment(posts) {
+    let final = posts.filter(post=>
+      post.payment == req.params.payment
+      )
+    return final
+  }
+
+  function filterByLocation(posts) {
+    
+    
+    let final = posts.filter(post=>
+      post.location == req.params.location
+      )
+      return final
+  }
+  
+
+  if(1){
+    // Post.find({
+    //   "price":`${req.params.price}`
+      
+    // }).then(posts=> {
+    //   console.log(posts);
+      
+     
+    //   if (!posts){
+    //     getposts
+    //   }
+    
+    Post.find()
+    .sort({date:-1})
+    .then(posts=>{
+          
+          let  final = posts
+            
+            final = (req.params.price == "*" ) ? final : filterByPrice(final)  
+           
+           
+            final = (req.params.location == "*" ) ? final : filterByLocation(final)
+           
+            
+            final = (req.params.payment == "*" ) ? final : filterByPayment(final)
+           
+            
+          res.send(final);
+          return;
+          
+        }).catch(err=>res.status(404).json({ error404:'Something went wrong'}))
+      
+    }
+
+})
+
+router.get('/filterBy/:technologies/:price/:location/:payment', (req, res) => {
+  if (req.params.technologies.slice(0,1)==","){
+    req.params.technologies = req.params.technologies.substring(1)
+  }
+  
+  function filterByPrice(posts) {
+    let final = posts.filter(post=>
+      post.price == req.params.price
+      )
+    return final
+  }
+  function filterByPayment(posts) {
+    let final = posts.filter(post=>
+      post.payment == req.params.payment
+      )
+    return final
+  }
+
+  function filterByLocation(posts) {
+    
+    
+    let final = posts.filter(post=>
+      post.location == req.params.location
+      )
+      return final
+  }
+  
+
+  // if(req.params.technologies == "*"){
+  //   // Post.find({
+  //   //   "price":`${req.params.price}`
+      
+  //   // }).then(posts=> {
+  //   //   console.log(posts);
+      
+     
+  //   //   if (!posts){
+  //   //     getposts
+  //   //   }
+    
+  //   Post.find()
+  //   .sort({date:-1})
+  //   .then(posts=>{
+          
+  //         let  final = posts
+            
+  //           final = (req.params.price == "*" ) ? final : filterByPrice(final)  
+           
+           
+  //           final = (req.params.location == "*" ) ? final : filterByLocation(final)
+           
+            
+  //           final = (req.params.payment == "*" ) ? final : filterByPayment(final)
+  //           console.log(final);
+            
+  //         res.send(final);
+  //         return;
+          
+  //       }).catch(err=>res.status(404).json({ error404:'Something went wrong'}))
+      
+  //   }
+  
+   
+  const terms = req.params.technologies.split(",")
+  Post.find(
+    {
+      'technologies': {
+        '$all': 
+         terms
+      },  
+    }
+  ).sort({ date: -1 })
+  .then(posts=>{
+    
+
+          let  final = posts
+              
+            final = (req.params.price == "*" ) ? final : filterByPrice(final)  
+            
+            final = (req.params.location == "*" ) ? final : filterByLocation(final)
+           
+            final = (req.params.payment == "*" ) ? final : filterByPayment(final)
+           
+          
+          
+          res.send(final).catch(err=>console.log(err))
+    
+    
+  }).catch(err=>res.status(404).json({ error404:'Something went wrong'}))
+ 
+    
+});
+router.get('/all', (req, res) => {
   Post.find()
     .sort({ date: -1 })
     .then(posts => res.json(posts))
     .catch(err => res.status(404).json({ nopostsfound: 'No posts found' }));
+  // Post.find()
+  //   .sort({ date: -1 })
+  //   .then(posts => res.render("showall",{posts:posts}));
+  // Post.find({},(err,posts)=>{
+  //   if(err){
+  //     console.log(err);
+  //   }else{
+      
+  //     res.render("showAll",{posts:posts})
+  //   }
+  // })
+    
 });
 
 // @route   GET api/posts/:id
@@ -31,7 +217,19 @@ router.get('/', (req, res) => {
 // @access  Public
 router.get('/:id', (req, res) => {
   Post.findById(req.params.id)
-    .then(post => res.json(post))
+   .then(post=> 
+    User.findById(post.user).then(user=>{
+      Profile.findOne({user:post.user}).then(profile=>{
+      if(!profile){
+        res.render('404',{error:'profile not found'})
+        return
+      }
+      let date = user.date.toString()
+      let email = user.email
+    res.render('postshow',{post:post,profile:profile,userdate:date.substring(4,15),useremail:email})
+    })
+    })
+    )
     .catch(err =>
       res.status(404).json({ nopostfound: 'No post found with that ID' })
     );
@@ -57,6 +255,8 @@ router.post(
       technologies: req.body.technologies,
       title: req.body.title,
       price: req.body.price,
+      payment:req.body.payment,
+      location:req.body.location,
       user: req.user.id
     });
 

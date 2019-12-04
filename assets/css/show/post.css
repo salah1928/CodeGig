@@ -1,0 +1,212 @@
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+a {
+  color: #e94f37;
+  text-decoration: none;
+}
+
+#outter {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+#outter #header {
+  background: #232323;
+  height: 15%;
+  margin-bottom: 2%;
+}
+
+#outter #header #inner {
+  color: white;
+  height: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#outter #header #inner #title {
+  padding-top: 2%;
+  padding-left: 5%;
+  text-transform: capitalize;
+}
+
+#outter #header #inner #btns {
+  width: calc(5vw + 10rem);
+  padding-left: 10%;
+}
+
+#outter #header #inner #btns ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  list-style: none;
+}
+
+#outter #under {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 0 auto;
+  width: 95%;
+}
+
+#outter #under #main {
+  width: 65%;
+  height: 40vh;
+  background: #232323;
+  color: white;
+  margin-right: 1%;
+}
+
+#outter #under #main #inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 95%;
+}
+
+#outter #under #main #inner #top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30%;
+  width: 95%;
+}
+
+#outter #under #main #inner #top h2 {
+  margin-left: 5%;
+}
+
+#outter #under #main #inner #bottom {
+  height: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding-left: 5%;
+}
+
+#outter #under #main #inner #bottom p {
+  max-width: 800px;
+}
+
+#outter #under #side {
+  background: #232323;
+  color: white;
+  width: 25%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#outter #under #side div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 3%;
+}
+
+#outter #under #side div ul {
+  list-style: none;
+  margin-left: 5%;
+}
+
+#outter #under #side div hr {
+  margin: 5% 0;
+}
+
+#outter #under #side div ul, #outter #under #side div h3 {
+  width: 95%;
+}
+
+#outter #under #side div h3 {
+  margin: 3% 5%;
+  margin-bottom: 0;
+}
+
+#outter #under #side div #abt {
+  margin-bottom: 5%;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+#outter #under #side div #abt hr {
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+@media screen and (max-width: 1000px) {
+  #outter #under #main {
+    width: calc(50vw + 10rem);
+  }
+  #outter #under #side {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #outter #under #side {
+    display: none;
+  }
+  #outter #under #main {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #outter #under #main {
+    height: 200%;
+  }
+}
+/*# sourceMappingURL=post.css.map */

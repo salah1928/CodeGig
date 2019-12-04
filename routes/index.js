@@ -1,6 +1,6 @@
 const express = require('express');
 const router   = express.Router();
-
+var posts = []
 router.get('/',(req,res)=>{
     res.render('home');
 })
@@ -16,4 +16,15 @@ router.get('/createProfile',(req,res)=>{
 router.get('/createPost',(req,res)=>{
     res.render('createPost');
 })
+router.get('/BrowseJobs',(req,res)=>{
+    res.redirect('/api/posts')
+})
+router.get('/about',(req,res)=>{
+    res.render('about')
+})
+
+router.get('*',(req,res)=>{
+    res.render('404',{error:"unspecified error..."})
+})
+
 module.exports = router;

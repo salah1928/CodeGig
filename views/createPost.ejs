@@ -1,41 +1,93 @@
-<form id="myform">
-    <input id="title" type="text">
-    <p id="title-error"></p>
-    <input id="description" type="text">
-    <p id="description-error"></p>
-    <input id="technologies" type="text">
-    <p id="technologies-error"></p>
-    <input id="price" type="number">
-    <button>submit</button>
-</form>
-<script>
-        document.getElementById('myform').addEventListener('submit',postppost)
-        
-        function postppost(e){
-            e.preventDefault()
-    
-            var title = document.getElementById('title').value;
-            var description = document.getElementById('description').value;
-            var technologies = document.getElementById('technologies').value;
-    
-            var xhr = new XMLHttpRequest();
-            xhr.onload = function(){
-                if(this.status == 200){
-                    console.log(this.responseText)
-                }else{
-                    console.log(this.responseText)
-                    let errors = JSON.parse(this.responseText)
-                    document.getElementById('title-error').innerHTML = errors.title ? errors.title : ""
-                    document.getElementById('technologies-error').innerHTML = errors.technologies ? errors.technologies : ""
-                    document.getElementById('description-error').innerHTML = errors.description ? errors.description : ""
-    
-                }
-            }
-            xhr.open('POST','http://localhost:5000/api/posts',true);
-            var tocken = localStorage.getItem('tocken');
-            xhr.setRequestHeader('Authorization',tocken);
-            xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-    
-            xhr.send(`title=${title}&technologies=${technologies}&description=${description}`)
-        }
-    </script>
+<% include partials/header %>
+<% include partials/nav %>
+
+<link rel="stylesheet" href="/css/create/Post.css">
+
+<div class="outter">
+    <div class="background"></div>
+    <div class="container">
+        <div class="errors-text" id="noacc"></div>
+        <form class="form" id="myform">
+          <label class="titlelabel" for="title">Job title</label>
+          <input class="myinput" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="text" id="title" placeholder="eg:developper,designer...">
+          <div class="errors-text" id="title-error"></div>
+  
+          <label class="titlelabel" for="description">Description</label>
+          <textarea name="" id="description" placeholder=" What exacly do you need?..." cols="30" rows="5"></textarea>
+          <div class="errors-text" id="description-error"></div>
+
+          <label class="titlelabel" for="technologies">What technologies are needed?</label>
+          <div id="technologies">
+              <div class="checkbox-div"><input type="checkbox" id="css" name="css" class="checkboxes"><label for="css">css</label></div>
+              <div class="checkbox-div"><input type="checkbox" id="javascript" name="javascript" class="checkboxes"><label for="javascript">javascript</label></div>
+              <div class="checkbox-div"><input type="checkbox" id="html" name="html" class="checkboxes"><label for="html">html</label></div>
+              <div id="showmore" class="showmore hidden">
+                  <div class="checkbox-div"><input type="checkbox" id="nodejs" name="nodejs" class="checkboxes"><label for="nodejs">nodejs</label></div>
+                  <div class="checkbox-div"><input type="checkbox" id="php" name="php" class="checkboxes"><label for="php">php</label></div>
+                  <div class="checkbox-div"><input type="checkbox" id="reactjs" name="reactjs" class="checkboxes"><label for="reactjs">reactjs</label></div>
+                  <div class="checkbox-div"><input type="checkbox" id="vuejs" name="vuejs" class="checkboxes"><label for="vuejs">vuejs</label></div>
+                  <div class="checkbox-div"><input type="checkbox" id="angular" name="angular" class="checkboxes"><label for="angular">angular</label></div>
+                  <div class="checkbox-div"><input type="checkbox" id="mongodb" name="mongodb" class="checkboxes"><label for="mongodb">mongodb</label></div>
+                  <div class="checkbox-div"><input type="checkbox" id="mysql" name="mysql" class="checkboxes"><label for="mysql">mysql</label></div>
+                  <div class="checkbox-div"><input type="checkbox" id="ruby" name="ruby" class="checkboxes"><label for="ruby">ruby</label></div>
+                  <div class="checkbox-div"><input type="checkbox" id="rubyonrails" name="rubyonrails" class="checkboxes"><label for="rubyonrails">rubyonrails</label></div>
+              </div>
+          </div>
+          <div id="showmore-btn" onclick="showmore()">show more</div>
+
+          <div class="errors-text" id="technologies-error"></div>
+  
+          <label class="titlelabel" for="price"> Price </label>
+          <div class="bottom">
+              <div class="price">
+                    
+                  <select name="price" id="currency">
+                    <option selected value="DH">DH</option>
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                  </select>
+                  <select name="currency" id="ammount"> 
+                    <option value="" disabled selected>select price...</option>
+                    <option value="0-100">0-100</option>
+                    <option value="100-500">100-500</option>
+                    <option value="500-1500">500-1500</option>
+                    <option value="1500+">1500+</option>
+                  </select>
+              </div>
+              
+     
+            
+              
+
+          </div>
+               
+       <div class="btmbtm">
+         
+        <div class="location">
+          <label for="location">Preferd location</label>
+          <select default="chose a city..."  id="location">
+              <option value="" disabled selected>chose a city...</option>
+              <option value="casablanca">casablanca</option>
+              <option value="rabat">rabat</option>
+              <option value="mohemadia">mohemadia</option>
+          </select>
+        </div>
+
+ 
+        <div class="payment">
+          <label for="location">Payment</label>
+          <select id="payment">
+              <option value="" disabled selected>rate...</option>
+              <option value="hourly">hourly</option>
+              <option value="fixed">fixed</option>
+          </select>
+        </div>
+       </div>
+       <div class="btn">
+        <button class="btn-click"><span class="btn-text">Post job</span></button>
+      </div>
+        </form>
+    </div>
+  </div>
+<script src="/javascript/createPost.js"></script>
+<% include partials/footer %>

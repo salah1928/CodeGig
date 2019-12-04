@@ -1,0 +1,41 @@
+$accent_orange:rgba(233, 79, 55, 1);
+$background_black:rgba(57, 62, 65, 1);
+$background_black2:rgba(35, 35, 35, 1);
+$text_secondary:rgba(92, 104, 111, 1);
+$body_blue:rgba(246, 247, 255, 1);
+*{
+    overflow: hidden;
+}
+.wrapper{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: $background_black2;
+    height: 50%;
+    z-index: -1;
+}
+.textt{
+    width: calc(100vw - 4rem);
+    max-width: 1000px;
+    background: $background_black;
+    height: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.texxt{
+    width: 95%;
+    p{
+        font-size: calc(0.8vw + 0.4rem);
+    }
+}

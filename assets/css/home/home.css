@@ -78,7 +78,15 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: calc(15vw + 3em);
+}
+
+.nav ul a {
+  text-decoration: none;
+  color: #393e41;
 }
 
 @media (max-width: 750px) {
@@ -105,6 +113,9 @@
     display: flex;
     -ms-flex-pack: distribute;
         justify-content: space-around;
+  }
+  .nav .h {
+    display: none;
   }
 }
 /*# sourceMappingURL=home.css.map */

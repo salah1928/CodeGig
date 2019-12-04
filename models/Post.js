@@ -14,12 +14,17 @@ const postSchema = new mongoose.Schema({
         required:true
     },
     technologies: {
-        type:String,
+        type:[String],
         required:true
     },
-    price: {
-        type:Number,
-        required:false
+   price:{
+       type:String
+   },
+    location:{
+        type:String,
+    },
+    payment:{
+        type:String,
     },
     date: {
         type:Date,

@@ -9,12 +9,23 @@ const PorfileSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    firstName:{
+        type:String,
+        required:true
+    },
+    bio:{
+        type:String,
+    },
     location:{
         type:String,
+        required:true
+    },
+    title:{
+        type:String,
+        required:true
     },
     phoneNumber:{
         type:Number,
-        required:true,
     },
 })
 module.exports = Profile = mongoose.model('profiles',PorfileSchema)

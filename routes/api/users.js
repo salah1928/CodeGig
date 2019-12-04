@@ -14,14 +14,12 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
 router.get('/',(req,res)=>{
-    const customers = [
-        {id: 1, firstName: 'John', lastName: 'Doe'},
-        {id: 2, firstName: 'Brad', lastName: 'Traversy'},
-        {id: 3, firstName: 'Mary', lastName: 'Swanson'},
-      ];
-    
-      res.json(customers);
+   
+   User.find().then(users=>{
+       res.json(users)
+   })
 })
+
 //! //_ROUTE_POST_PUBLIC_//_:REGISTER NEW USER_______________________________________________________________________________________\\
 router.post('/register',(req,res)=>{
     //* Valdation
@@ -74,7 +72,7 @@ router.post('/login',(req,res)=>{
     User.findOne({email:email})
     .then(user=>{
         if(!user){
-            res.status(404).json({email:'User not found.'})
+            res.status(404).json({email:'User not found.'}).catch(err=>console.log(err))
         }
         bcrypt.compare(password,user.password)
             .then(isMatch=>{
@@ -108,6 +106,11 @@ router.get('/current',passport.authenticate('jwt',{session:false}),(req,res)=>{
         email:req.user.email
     })
 })
-
+router.get('/:id',(req,res)=>{
+   
+    User.findById(req.params.id).then(users=>{
+        res.json(users)
+    })
+ })
 
 module.exports = router;

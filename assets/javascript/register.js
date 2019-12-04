@@ -13,8 +13,8 @@
       xhr.onload = function(){
         
         if(this.status==200){
-          window.location.href = '/login';
-            
+          window.location.href = '/createProfile';
+          
             
         }else{
             const errors = JSON.parse(this.responseText)

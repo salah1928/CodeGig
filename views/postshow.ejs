@@ -1,0 +1,46 @@
+<% include partials/header %>
+<% include partials/nav %>
+<link rel="stylesheet" href="/css/show/post.css">
+<div id="outter">
+            <div id="header">
+                <div id="inner">
+                        <div id="title"><h2><%= post.title%></h2>
+                        </div>
+                        
+                </div>
+            </div>
+            
+            <div id="under">
+                    <div id="main">
+                            <div id="inner">
+                                    <div id="top">
+                                            <h2>Project details</h2>
+                                            <h3><%= post.price %></h3>
+                                            
+                                        </div><hr>
+                                        <div id="bottom">
+                                                <p><%=post.description%></p>
+                                                <div><h4>Required technologies</h4>
+                                                    <h5><%= post.technologies %></h5></div>
+                                            </div>
+                            </div>
+                        </div>
+                    <div id="side">
+                            <div>
+                                    <div onclick="loadUser('<%= post.user %>')" id="abt">
+                                            <h3>About this employer</h3>
+                                            <hr>
+                                            <ul>
+                                                <li><%= profile.location %></li>
+                                                <li><%= profile.firstName %></li>
+                                                <li>Member Since <%= userdate %></li>
+                                                <li><a href="/api/profiles/<%=useremail%>">See profile</a></li>
+                                            </ul>
+                                        </div>
+                                     
+                            </div>
+                        </div>
+            </div>
+</div>
+<script src="/javascript/postshow.js"></script>
+<% include partials/footer %>

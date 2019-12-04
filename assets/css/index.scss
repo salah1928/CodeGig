@@ -9,7 +9,7 @@ $body_blue:rgba(246, 247, 255, 1);
 }
 body{
     background: $body_blue;
-    overflow: hidden;
+    
     font-family: 'Roboto','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .titles{
@@ -49,4 +49,38 @@ body{
         color:white
     }
 }
-
+.icons{
+    color: $accent_orange;
+}
+nav{
+    background: $background_black;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+    h2{
+       
+        a{
+            color: $accent_orange;
+            text-decoration: none;
+        }
+    }
+    ul{
+        display: flex;
+        justify-content: space-between;
+        width: 15%;
+        list-style: none;
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    }
+}
+@media(max-width:1000px){
+    #nav{
+        ul{
+            width: 50%;
+        }
+    }
+}

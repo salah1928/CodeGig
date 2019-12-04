@@ -132,6 +132,11 @@
   border: transparent;
 }
 
+.container .form textarea {
+  width: 100%;
+  height: 30%;
+}
+
 .container .form button {
   border: transparent;
   width: 100%;

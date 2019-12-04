@@ -12,7 +12,7 @@
         if(this.status==200){
             const succes = JSON.parse(this.responseText)
             localStorage.setItem('tocken',succes.tocken)
-            window.location.href = '/';
+            window.location.href = '/browsejobs';
             // let url = "http://localhost:5000/api/profiles"
             // let token = succes.tocken
             // let h = new Headers();

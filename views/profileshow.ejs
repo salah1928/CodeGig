@@ -1,0 +1,20 @@
+<% include partials/header%>
+<% include partials/nav%>
+<link rel="stylesheet" href="/css/show/profile.css">
+<div id="wrapper">
+    <div id="background">
+    </div>
+    <div id="container">
+        
+    <div id="info">
+        <div>
+        <h2>Name: <%= profile.profileName %> <%=profile.firstName %></h2>
+        <h4>Job: <%= profile.title %></h4>
+        <p>Bio: <%= profile.bio %></p>
+        <p>City: <%= profile.location %></p>
+        <p>Phone number: <%= profile.phoneNumber%></p>
+        </div>
+    </div>
+    </div>
+</div>
+<% include partials/footer%>

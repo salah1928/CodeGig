@@ -1,4 +1,4 @@
-<form id="myform">
+<!-- <form id="myform">
     <input id="profileName" type="text">
     <div id="name-error"></div>
     <input id="phoneNumber" type="phoneNumber">
@@ -6,36 +6,59 @@
     <input id="location" type="text">
     <div id="location-error"></div>
     <button>submit</button>
-</form>
+</form> -->
+<% include partials/header %>
+<link rel="stylesheet" href="/css/create/Profile.css">
+<!-- <form id="myform">
+    <input id="name" name="name" type="text" placeholder="name">
+    <div id="name-error"></div>
+    <input id="email" name="email" type="text" placeholder="email">
+    <div id="email-error"></div>
+    <input id="password" name="password" type="password" placeholder="password">
+    <div id="password-error"></div>
+    <input id="password2" name="password2" type="password" placeholder="confirm password">
+    <div id="password2-error"></div>
+    <button type="submit" >Register</button>
+</form> -->
+<div class="outter">
+  <div class="background"></div>
+  <div class="container">
+      
+      <form class="form" id="myform">
 
-<script>
-    document.getElementById('myform').addEventListener('submit',postprofile)
-    
-    function postprofile(e){
-        e.preventDefault()
+        <label for="profileName">what's your name?</label>
+        <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="text" id="firstName" placeholder="fist name">
+        <div class="errors-text" id="firstName-error"></div>
+        <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="text" id="profileName" placeholder="last name">
+        <div class="errors-text" id="profileName-error"></div>
+        
 
-        var profileName = document.getElementById('profileName').value;
-        var phoneNumber = document.getElementById('phoneNumber').value;
-        var location = document.getElementById('location').value;
+        <label for="phoneNumber">what's your phone number?</label>
+        <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="number" id="phoneNumber" placeholder="eg:0612345678">
+        <div class="errors-text" id="phoneNumber-error"></div>
 
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function(){
-            if(this.status == 200){
-                console.log(this.responseText)
-            }else{
-                console.log(this.responseText)
-                let errors = JSON.parse(this.responseText)
-                document.getElementById('name-error').innerHTML = errors.profileName ? errors.profileName : ""
-                document.getElementById('location-error').innerHTML = errors.location ? errors.location : ""
-                document.getElementById('number-error').innerHTML = errors.phoneNumber ? errors.phoneNumber : ""
+        <label for="title">what do you do?</label>
+        <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="text" id="title" placeholder="eg:developper,designer...">
+        <div class="errors-text" id="title-error"></div>
 
-            }
-        }
-        xhr.open('POST','http://localhost:5000/api/profiles',true);
-        var tocken = localStorage.getItem('tocken');
-        xhr.setRequestHeader('Authorization',tocken);
-        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        <label for="location">where do you live?</label>
+        <select default="chose a city..."  id="location">
+            <option value="" disabled selected>chose a city...</option>
+            <option value="casablanca">casablanca</option>
+            <option value="rabat">rabat</option>
+            <option value="mohemadia">mohemadia</option>
+        </select>
+        <div class="errors-text" id="location-error"></div>
 
-        xhr.send(`profileName=${profileName}&location=${location}&phoneNumber=${phoneNumber}`)
-    }
-</script>
+        <label for="bio">Bio</label>
+        
+        
+        <textarea name="" id="bio" placeholder=" Tell us more about yourself..." cols="30" rows="5"></textarea>
+        <div class="errors-text" id="bio-error"></div>
+        <button class="btn-click"><span class="btn-text">Create Profile</span></button>
+        
+      </form>
+  </div>
+</div>
+<script src="/javascript/createProfile.js"></script>
+<% include partials/footer %>
