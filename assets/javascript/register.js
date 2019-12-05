@@ -13,7 +13,7 @@
       xhr.onload = function(){
         
         if(this.status==200){
-          window.location.href = '/createProfile';
+          window.location.href = '/login';
           
             
         }else{
