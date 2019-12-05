@@ -40,7 +40,7 @@ function showmore(){
 }
 
 async function getposts() {
-    const res = await fetch('http://localhost:5000/api/posts/all').catch(err=>console.log(err));
+    const res = await fetch('/api/posts/all').catch(err=>console.log(err));
     const posts = await res.json();
     document.getElementById('search-form').reset()
     document.getElementById('left-form').reset()
@@ -50,7 +50,7 @@ async function getposts() {
 
 
     const searchPosts = async searchText =>{
-    const res = await fetch('http://localhost:5000/api/posts/all')
+    const res = await fetch('/api/posts/all')
     
     const posts = await res.json()
 
@@ -104,7 +104,7 @@ searchBar.addEventListener('input',()=>searchPosts(searchBar.value))
      
      
     if ( technologies !== "*" ) {
-        const res = await fetch(`http://localhost:5000/api/posts/filterBy/${technologies}/${price}/${location}/${payment}`)
+        const res = await fetch(`/api/posts/filterBy/${technologies}/${price}/${location}/${payment}`)
         const posts = await res.json()
    
        
@@ -112,7 +112,7 @@ searchBar.addEventListener('input',()=>searchPosts(searchBar.value))
        return
     }
     
-    const res = await fetch(`http://localhost:5000/api/posts/filter/${price}/${location}/${payment}`)
+    const res = await fetch(`/api/posts/filter/${price}/${location}/${payment}`)
     const posts = await res.json()
 
    

@@ -42,7 +42,7 @@
     
                 }
             }
-            xhr.open('POST','http://localhost:5000/api/posts',true);
+            xhr.open('POST','/api/posts',true);
             var tocken = localStorage.getItem('tocken');
             xhr.setRequestHeader('Authorization',tocken);
             xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');

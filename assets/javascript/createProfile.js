@@ -28,7 +28,7 @@ document.getElementById('myform').addEventListener('submit',postprofile)
 
             }
         }
-        xhr.open('POST','http://localhost:5000/api/profiles',true);
+        xhr.open('POST','/api/profiles',true);
         var tocken = localStorage.getItem('tocken');
         xhr.setRequestHeader('Authorization',tocken);
         xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');

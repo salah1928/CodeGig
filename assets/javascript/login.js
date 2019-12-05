@@ -33,7 +33,7 @@
             document.getElementById('password-error').innerHTML =  errors.password ? errors.password : ""
         }
       }
-      xhr.open('POST', 'http://localhost:5000/api/users/login', true);
+      xhr.open('POST', '/api/users/login', true);
       xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
      
       xhr.send(`email=${email}&password=${password}`);

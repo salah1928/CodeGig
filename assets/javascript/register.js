@@ -27,7 +27,7 @@
             document.getElementById('password2-error').innerHTML = errors.password2 ? errors.password2 : ""
         }
       }
-      xhr.open('POST', 'http://localhost:5000/api/users/register', true);
+      xhr.open('POST', '/api/users/register', true);
       xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
      
       xhr.send(`email=${email}&password=${password}&password2=${password2}`);
