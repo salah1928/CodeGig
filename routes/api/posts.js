@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
     // .catch(err => res.status(404).json({ nopostsfound: 'No posts found' }));
   Post.find()
     .sort({ date: -1 })
-    .then(posts => res.render("showall",{posts:posts}));
+    .then(posts => res.render("showAll",{posts:posts}));
   // Post.find({},(err,posts)=>{
   //   if(err){
   //     console.log(err);
